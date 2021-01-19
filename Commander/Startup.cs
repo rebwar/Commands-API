@@ -1,3 +1,4 @@
+using AutoMapper;
 using Commander.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace Commander
             services.AddControllers();
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(connectionString));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
